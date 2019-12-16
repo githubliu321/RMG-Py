@@ -55,7 +55,7 @@ class TestArrheniusFilterFits():
     """
 
     @classmethod
-    def set_up_class(cls):
+    def setUpClass(cls):
         """
         Load the database before running the tests.
         """
@@ -114,22 +114,22 @@ class TestArrheniusFilterFits():
 
                 # Compare new fit with old one. assert_almost_equal has difficulties to compare large floats e.g. for A
                 if new_arr_unimol is not None:
-                    if not math.is_close(new_arr_unimol.A.value_si, file_fit.A.value_si):
+                    if not math.isclose(new_arr_unimol.A.value_si, file_fit.A.value_si):
                         raise ValueError("""Arrhenius fits for reaction filtering need to be updated. Please run the
                         ipython notebook {0} and commit the newly generated file.""".format(path_notebook))
-                    if not math.is_close(new_arr_unimol.Ea.value_si, file_fit.Ea.value_si):
+                    if not math.isclose(new_arr_unimol.Ea.value_si, file_fit.Ea.value_si):
                         raise ValueError("""Arrhenius fits for reaction filtering need to be updated. Please run the
                         ipython notebook {0} and commit the newly generated file.""".format(path_notebook))
-                    if not math.is_close(new_arr_unimol.n.value_si, file_fit.n.value_si):
+                    if not math.isclose(new_arr_unimol.n.value_si, file_fit.n.value_si):
                         raise ValueError("""Arrhenius fits for reaction filtering need to be updated. Please run the
                         ipython notebook {0} and commit the newly generated file.""".format(path_notebook))
-                    if not math.is_close(new_arr_unimol.T0.value_si, file_fit.T0.value_si):
+                    if not math.isclose(new_arr_unimol.T0.value_si, file_fit.T0.value_si):
                         raise ValueError("""Arrhenius fits for reaction filtering need to be updated. Please run the
                         ipython notebook {0} and commit the newly generated file.""".format(path_notebook))
-                    if not math.is_close(new_arr_unimol.Tmin.value_si, file_fit.Tmin.value_si):
+                    if not math.isclose(new_arr_unimol.Tmin.value_si, file_fit.Tmin.value_si):
                         raise ValueError("""Arrhenius fits for reaction filtering need to be updated. Please run the
                         ipython notebook {0} and commit the newly generated file.""".format(path_notebook))
-                    if not math.is_close(new_arr_unimol.Tmax.value_si, file_fit.Tmax.value_si):
+                    if not math.isclose(new_arr_unimol.Tmax.value_si, file_fit.Tmax.value_si):
                         raise ValueError("""Arrhenius fits for reaction filtering need to be updated. Please run the
                         ipython notebook {0} and commit the newly generated file.""".format(path_notebook))
 
@@ -143,22 +143,22 @@ class TestArrheniusFilterFits():
 
                 # Compare new fit with old one.
                 if new_arr_bimol is not None:
-                    if not math.is_close(new_arr_bimol.A.value_si, file_fit.A.value_si):
+                    if not math.isclose(new_arr_bimol.A.value_si, file_fit.A.value_si):
                         raise ValueError("""Arrhenius fits for reaction filtering need to be updated. Please run the
                         ipython notebook {0} and commit the newly generated file.""".format(path_notebook))
-                    if not math.is_close(new_arr_bimol.Ea.value_si, file_fit.Ea.value_si):
+                    if not math.isclose(new_arr_bimol.Ea.value_si, file_fit.Ea.value_si):
                         raise ValueError("""Arrhenius fits for reaction filtering need to be updated. Please run the
                         ipython notebook {0} and commit the newly generated file.""".format(path_notebook))
-                    if not math.is_close(new_arr_bimol.n.value_si, file_fit.n.value_si):
+                    if not math.isclose(new_arr_bimol.n.value_si, file_fit.n.value_si):
                         raise ValueError("""Arrhenius fits for reaction filtering need to be updated. Please run the
                         ipython notebook {0} and commit the newly generated file.""".format(path_notebook))
-                    if not math.is_close(new_arr_bimol.T0.value_si, file_fit.T0.value_si):
+                    if not math.isclose(new_arr_bimol.T0.value_si, file_fit.T0.value_si):
                         raise ValueError("""Arrhenius fits for reaction filtering need to be updated. Please run the
                         ipython notebook {0} and commit the newly generated file.""".format(path_notebook))
-                    if not math.is_close(new_arr_bimol.Tmin.value_si, file_fit.Tmin.value_si):
+                    if not math.isclose(new_arr_bimol.Tmin.value_si, file_fit.Tmin.value_si):
                         raise ValueError("""Arrhenius fits for reaction filtering need to be updated. Please run the
                         ipython notebook {0} and commit the newly generated file.""".format(path_notebook))
-                    if not math.is_close(new_arr_bimol.Tmax.value_si, file_fit.Tmax.value_si):
+                    if not math.isclose(new_arr_bimol.Tmax.value_si, file_fit.Tmax.value_si):
                         raise ValueError("""Arrhenius fits for reaction filtering need to be updated. Please run the
                         ipython notebook {0} and commit the newly generated file.""".format(path_notebook))
 
@@ -202,7 +202,7 @@ class TestArrheniusFilterFits():
                     mydict = dict(zip(index_list, kvals))
 
                     # Find key and value of max rate coefficient
-                    key_max_rate = max(mydict.iteritems(), key=operator.itemgetter(1))[0]
+                    key_max_rate = max(mydict.items(), key=operator.itemgetter(1))[0]
 
                     max_entry = dep.entries.get(key_max_rate)
                     max_rxn = max_entry.item
