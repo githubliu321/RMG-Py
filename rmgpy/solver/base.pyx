@@ -611,12 +611,12 @@ cdef class ReactionSystem(DASx):
         cdef np.ndarray[np.float64_t, ndim=1] surface_total_div_accum_nums, surface_species_rate_ratios
         cdef np.ndarray[np.float64_t, ndim=1] forward_rate_coefficients, core_species_concentrations
         cdef double prev_time, total_moles, c, volume, RTP, max_char_rate, br, rr
-        cdef np.ndarray[numpy.float64_t, ndim=1] unimolecular_threshold_val, bimolecular_threshold_val, \
-        cdef np.ndarray[numpy.float64_t, ndim=1] trimolecular_threshold_val
-        cdef np.ndarray[numpy.float64_t, ndim=1] kvals_uni, kvals_bi, kvals_tri
-        cdef np.ndarray[numpy.float64_t, ndim=1] max_uni_concentrations
-        cdef np.ndarray[numpy.float64_t, ndim=2] max_bi_boncentrations
-        cdef np.ndarray[numpy.float64_t, ndim=3] max_tri_concentrations
+        cdef np.ndarray[np.float64_t, ndim=1] unimolecular_threshold_val, bimolecular_threshold_val
+        cdef np.ndarray[np.float64_t, ndim=1] trimolecular_threshold_val
+        cdef np.ndarray[np.float64_t, ndim=1] kvals_uni, kvals_bi, kvals_tri
+        cdef np.ndarray[np.float64_t, ndim=1] max_uni_concentrations
+        cdef np.ndarray[np.float64_t, ndim=2] max_bi_boncentrations
+        cdef np.ndarray[np.float64_t, ndim=3] max_tri_concentrations
         cdef bool useDynamicsTemp, first_time, use_dynamics, terminate_at_max_objects, schanged, invalid_objects_print_boolean
         cdef np.ndarray[np.float64_t, ndim=1] edge_reaction_rates
         cdef double reaction_rate, production, consumption
@@ -1255,7 +1255,7 @@ cdef class ReactionSystem(DASx):
         if filter_reactions:
             # Calculate filter thresholds for each reaction family. Note that this method is temperature dependent
             # and has to be moved inside the while not terminated loop if used with a non-isothermal reactor!
-            kvals_uni, kvals_bi, kvals_tri = self.get_threshold_rate_constants(modelSettings)
+            kvals_uni, kvals_bi, kvals_tri = self.get_threshold_rate_constants(model_settings)
 
             unimolecular_threshold_val = tol_move_to_core * char_rate / kvals_uni
             bimolecular_threshold_val = tol_move_to_core * char_rate / kvals_bi
