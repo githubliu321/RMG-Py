@@ -82,7 +82,7 @@ test-database:
 	nosetests --nocapture --nologcapture --verbose --detailed-errors testing/databaseTest.py
 
 test-filterfits:
- 	nosetests --nocapture --nologcapture --verbose --detailed-errors testing/checkFilterFits.py
+	nosetests --nocapture --nologcapture --verbose --detailed-errors testing/checkFilterFits.py
 
 eg0: all
 	mkdir -p testing/eg0
