@@ -1232,7 +1232,7 @@ class TestKinetics(unittest.TestCase):
 class TestLoadFilterFits(unittest.TestCase):
 
     @classmethod
-    def set_up_class(cls):
+    def setUpClass(cls):
         """
         Load the database to test loading the YAML file with custom filter criteria.
         """
