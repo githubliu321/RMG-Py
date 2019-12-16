@@ -167,10 +167,11 @@ cdef class MBSampledReactor(ReactionSystem):
         # First call the base class version of the method
         # This initializes the attributes declared in the base class
         ReactionSystem.initialize_model(self, core_species=core_species, core_reactions=core_reactions,
-                                       edge_species=edge_species, edge_reactions=edge_reactions,
-                                       surface_species=surface_species, surface_reactions=surface_reactions,
-                                       pdep_networks=pdep_networks, atol=atol, rtol=rtol, sensitivity=sensitivity,
-                                       sens_atol=sens_atol, sens_rtol=sens_rtol, num_families=num_families)
+                                        edge_species=edge_species, edge_reactions=edge_reactions,
+                                        surface_species=surface_species, surface_reactions=surface_reactions,
+                                        pdep_networks=pdep_networks, atol=atol, rtol=rtol, sensitivity=sensitivity,
+                                        sens_atol=sens_atol, sens_rtol=sens_rtol, filter_reactions=filter_reactions,
+                                        conditions=conditions, num_families=num_families)
 
         # Set initial conditions
         self.set_initial_conditions()
