@@ -136,12 +136,16 @@ class ExplorerJob(object):
 
         form = mmol.get_formula()
 
+        # Generate a list of families to be added to bimolecular species tuples
+        families = kinetics_database.families.keys()
+
         for spec in list(self.bath_gas.keys()) + self.source:
             nspec, is_new = reaction_model.make_new_species(spec, reactive=False)
-            flags = np.array([s.molecule[0].get_formula() == form for s in reaction_model.core.species])
+            flags = np.tile(np.array([s.molecule[0].get_formula() == form for s in reaction_model.core.species]),
+                             (len(families), 1)).T
             reaction_model.enlarge(nspec, react_edge=False, unimolecular_react=flags,
                                    bimolecular_react=np.zeros((len(reaction_model.core.species),
-                                                              len(reaction_model.core.species))))
+                                                              len(reaction_model.core.species), len(families))))
 
         reaction_model.add_seed_mechanism_to_core('kineticsjobs')
 
