@@ -1250,5 +1250,5 @@ class TestLoadFilterFits(unittest.TestCase):
         for model_settings in model_settings_list:
             self.assertIsNotNone(model_settings.unimolecular_filter_fit)
             self.assertIsNotNone(model_settings.bimolecular_filter_fit)
-            self.assertIsInstance(model_settings.unimolecular_filter_fit[1], Arrhenius)
+            self.assertIsInstance(model_settings.unimolecular_filter_fit[2], Arrhenius)
             self.assertIsInstance(model_settings.bimolecular_filter_fit[0], Arrhenius)
